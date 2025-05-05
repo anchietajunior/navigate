@@ -9,8 +9,9 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from '@expo/vector-icons/Ionicons';
 
 import HomeScreen from './screens/Home';
-import ProfileScreen from './screens/Profile';
+import InfoScreen from './screens/Info';
 import AddModalScreen from './screens/AddModal';
+import { Pressable } from 'react-native-gesture-handler';
 
 const Tab = createBottomTabNavigator();
 const RootStack = createNativeStackNavigator();
@@ -23,11 +24,11 @@ function MainTabs() {
           const iconName = route.name === 'Home' ? 'home-outline' : 'person-outline';
           return <Ionicons name={iconName} size={size} color={color} />;
         },
-        headerShown: true,
+        headerShown: false,
       })}
     >
       <Tab.Screen name="Home" component={HomeScreen} options={{ tabBarLabel: 'Início' }} />
-      <Tab.Screen name="Profile" component={ProfileScreen} options={{ tabBarLabel: 'Perfil' }} />
+      <Tab.Screen name="Info" component={InfoScreen} options={{ tabBarLabel: 'Info' }} />
     </Tab.Navigator>
   );
 }
@@ -44,11 +45,24 @@ export default function App() {
               options={{ headerShown: false }}
             />
           </RootStack.Group>
-          <RootStack.Group screenOptions={{ presentation: 'modal' }}>
+          <RootStack.Group screenOptions={{
+             presentation: 'modal', animation: "slide_from_bottom" 
+             }}>
             <RootStack.Screen
               name="AddModal"
               component={AddModalScreen}
-              options={{ title: 'Adicionar' }}
+              options={( {navigation}) => ({
+                title: 'Adicionar',
+                headerBackVisible: false,
+                headerTintColor: "#000",
+                headerRight: () => {
+                  <Pressable onPress={() => navigation.goBack()}
+                  style={{ paddingHorizontal: 16 }}
+                  >
+                    <Ionicons name="home-outline" size={24} color={"#000"} />
+                  </Pressable>
+                }
+              })}
             />
           </RootStack.Group>
         </RootStack.Navigator>
