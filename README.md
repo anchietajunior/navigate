@@ -13,6 +13,11 @@ cd navigate
 npm install @react-navigation/native
 npx expo install react-native-screens react-native-safe-area-context
 npm install @react-navigation/native-stack
+npx expo install react-native-gesture-handler react-native-reanimated react-native-screens
+
+# TABS
+npm install @react-navigation/bottom-tabs
+
 ```
 
 Configurando o App.js

@@ -44,8 +44,6 @@ export default function App() {
               options={{ headerShown: false }}
             />
           </RootStack.Group>
-
-          {/* modais */}
           <RootStack.Group screenOptions={{ presentation: 'modal' }}>
             <RootStack.Screen
               name="AddModal"
