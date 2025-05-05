@@ -1,13 +1,14 @@
 import React from 'react';
-import { View, Text, Button } from 'react-native';
+import { Button, Text } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function HomeScreen({ navigation }) {
   return (
     <SafeAreaView style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Text>Página Home</Text>
       <Button
-        title="Ir para Perfil"
-        onPress={() => navigation.navigate('Profile')}
+        title="Add"
+        onPress={() => navigation.navigate('AddModal')}
       />
     </SafeAreaView>
   );
